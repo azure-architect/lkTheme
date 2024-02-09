@@ -13,7 +13,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
  */
 
 mix.js('src/js/app.js', 'dist/js')
-   .sass('src/scss/app.scss', 'dist/css')
+   .sass('src/scss/app.scss', 'css')
    .setPublicPath('dist');
 
 // Configure BrowserSync
@@ -23,7 +23,7 @@ mix.webpackConfig({
             // BrowserSync options
             host: 'localhost',
             port: 3000,
-            proxy: 'your-local-development-url.test', // Update this to your local development URL
+            proxy: 'lk-timber-acf-blocks.local', // Update this to your local development URL
             files: [
                 'dist/js/**/*.js', // Path to where webpack outputs the JS files
                 'dist/css/**/*.css', // Path to where webpack outputs the CSS files
