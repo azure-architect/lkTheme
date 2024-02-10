@@ -1,11 +1,29 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<h2>{{ foo }}</h2>
-	<p>{{ qux }}</p>
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
-	
+
+
+	<div class="container">
+		<div class=" row  row-cols-md-3 g-4">
+			{% for post in posts %}
+				<!-- Each post takes up 4 of the 12 columns in the grid -->
+				<div class="col">
+					<div class="card h-100 shadow" >
+						<img src="{{ post.thumbnail.src }}" class="card-img-top" alt="{{post.title}}">
+						<div class="card-body">
+							<h5 class="card-title">{{ post.title }}</h5>
+							<p class="card-text">{{ post.excerpt }}</p>
+							<a href="{{post.link}}" class="btn btn-primary">Read More</a>
+						</div>
+						    <div class="card-footer">
+      <small class="text-body-secondary">Last updated 3 mins ago</small>
+    </div>
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
 	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
 {% endblock %}

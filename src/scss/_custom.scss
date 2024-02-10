@@ -1,0 +1,53 @@
+
+
+
+
+h1 , h2 , h3 , h4 , h5 , h6  {
+    font-family: 'Anton', sans-serif;
+    a{
+        text-decoration: none !important;
+    }
+}
+
+.fixed-right {
+    position: fixed;
+    right: 50px ;
+    top: 20px; /* Adjust as needed */
+    height: 100%; /* Example to make it full height */
+    z-index: 50;
+    width: 50%;
+    overflow-y: scroll; /* Makes vertical overflow scrollable */
+}
+
+
+$font-family-base: 'Fira Sans', sans-serif;
+
+
+$enable-gradients: true;
+$enable-rounded: false;
+
+
+// scss-docs-start color-variables
+$blue:    #0000ff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #d63384 !default;
+$red:     #ff0000 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #198754 !default;
+$teal:    #20c997 !default;
+$cyan:    #0dcaf0 !default;
+$gray:    #6c757d !default;
+// scss-docs-end color-variables
+
+
+// scss-docs-start theme-color-variables
+$primary:       $red !default;
+$secondary:     $gray !default;
+$success:       $green !default;
+$info:          $blue !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+
+// scss-docs-end theme-color-variables

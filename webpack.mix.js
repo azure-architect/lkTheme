@@ -28,7 +28,7 @@ mix.webpackConfig({
                 'dist/js/**/*.js', // Path to where webpack outputs the JS files
                 'dist/css/**/*.css', // Path to where webpack outputs the CSS files
                 './**/*.php', // Watch PHP files for changes (useful if integrating with a PHP project like WordPress)
-                // Add any other file paths you want to watch for changes
+                'views/**/*.*', // Add any other file paths you want to watch for changes
             ]
         })
     ]

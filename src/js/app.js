@@ -15,6 +15,9 @@ Alpine.plugin(collapse)
 Alpine.plugin(persist)
 Alpine.plugin(intersect)
 Alpine.plugin(mask)
+import '@popperjs/core'
+import 'bootstrap';
+
 
  
  
