@@ -17,7 +17,8 @@
   ],
   "require": {
     "timber/timber": "2.x-dev",
-    "symfony/var-dumper": "6.4.3"
+    "symfony/var-dumper": "6.4.3",
+    "hellonico/timber-dump-extension": "^1.0"
   },
   "require-dev": {
     "automattic/wordbless": "^0.4.2",

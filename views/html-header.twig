@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 9]><html class="no-js no-svg ie lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
 <!--[if IE 9]><html class="no-js no-svg ie ie9 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js no-svg" {{ site.language_attributes }}> <!--<![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js no-svg" {{ site.language_attributes }}  data-bs-theme="dark">  <!--<![endif]-->
 <head>
     <meta charset="{{ site.charset }}" />
     <meta name="description" content="{{ site.description }}">
@@ -13,3 +13,27 @@
     <link rel="pingback" href="{{ site.pingback_url }}" />
     <link rel="profile" href="http://gmpg.org/xfn/11">
     {{function('wp_head')}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the theme has been set in localStorage
+    const currentTheme = localStorage.getItem('data-bs-theme');
+    
+    // If a theme was previously set, apply it to the <html> tag
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-bs-theme', currentTheme);
+    }
+    
+    // Add event listener to toggle theme
+    document.getElementById('theme-toggler').addEventListener('click', function() {
+        // Determine the new theme based on the current setting
+        const newTheme = document.documentElement.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+        
+        // Set the new theme on the <html> tag
+        document.documentElement.setAttribute('data-bs-theme', newTheme);
+        
+        // Save the new theme setting in localStorage
+        localStorage.setItem('data-bs-theme', newTheme);
+    });
+});
+
+</script>

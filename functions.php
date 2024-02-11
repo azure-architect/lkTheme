@@ -64,3 +64,45 @@ function lk_add_custom_upload_mimes( $existing_mimes ) {
 }
 add_filter( 'upload_mimes', 'lk_add_custom_upload_mimes' );
 
+/**
+ * Display the capabilities of a specific user role using a shortcode.
+ *
+ * @param array $atts Shortcode attributes
+ * @return string HTML output of the role capabilities
+ */
+function show_role_capabilities_shortcode($atts) {
+    // Set default attributes for the shortcode
+    $atts = shortcode_atts(array(
+        'role' => 'subscriber', // Default role if none specified
+    ), $atts, 'role_capabilities');
+
+    // Get the role object
+    $role = get_role($atts['role']);
+
+    // Return an error message if the role is not found
+    if (!$role) {
+        return 'Role not found.';
+    }
+
+    // Get capabilities from the role object
+    $capabilities = array_keys($role->capabilities);
+
+    // Start output buffering
+    ob_start();
+    
+    // Output the role and capabilities
+    echo '<div class="role-capabilities">';
+    echo '<h4>Capabilities of ' . esc_html($atts['role']) . ' Role:</h4>';
+    echo '<ul>';
+    foreach ($capabilities as $capability) {
+        echo '<li>' . esc_html($capability) . '</li>';
+    }
+    echo '</ul>';
+    echo '</div>';
+
+    // Get the buffer content and clean the buffer
+    $output = ob_get_clean();
+
+    return $output;
+}
+add_shortcode('role_capabilities', 'show_role_capabilities_shortcode');

@@ -1,29 +1,35 @@
 {% extends "base.twig" %}
 
 {% block content %}
-
-
 	<div class="container">
-		<div class=" row  row-cols-md-3 g-4">
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 			{% for post in posts %}
-				<!-- Each post takes up 4 of the 12 columns in the grid -->
 				<div class="col">
-					<div class="card h-100 shadow" >
-						<img src="{{ post.thumbnail.src }}" class="card-img-top" alt="{{post.title}}">
+					<div class="card h-100 shadow">
+						{% if post.thumbnail %}
+							<img src="{{ post.thumbnail.src }}" class="card-img-top" alt="{{ post.title }}">
+						{% else %}
+							{% set randomImageId = random(1, 100) %}
+							<img src="https://picsum.photos/seed/{{ randomImageId }}/500/300" class="card-img-top" alt="Random Image">
+						{% endif %}
 						<div class="card-body">
 							<h5 class="card-title">{{ post.title }}</h5>
-							<p class="card-text">{{ post.excerpt }}</p>
-							<a href="{{post.link}}" class="btn btn-primary">Read More</a>
+							<p class="card-text">
+								{{ post.excerpt | split(' ') | slice(0, 25) | join(' ') }}
+								{% if post.excerpt | split(' ') | length > 25 %}...
+									<a href="{{ post.link }}" class="btn btn-link">Read More</a>
+								{% endif %}
+							</p>
+						
 						</div>
-						    <div class="card-footer">
-      <small class="text-body-secondary">Last updated 3 mins ago</small>
-    </div>
-
+						<div class="card-footer">
+							<small class="text-body-secondary">Last updated 3 mins ago</small>
+						</div>
 					</div>
 				</div>
 			{% endfor %}
 		</div>
 	</div>
 
-	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+	{% include 'partial/pagination.twig' with { pagination: posts.pagination({ show_all: false, mid_size: 3, end_size: 2 }) } %}
 {% endblock %}

@@ -12,7 +12,7 @@
  * @subpackage  Timber
  * @since   Timber 0.1
  */
-
+$context['admin_permissions'] = do_shortcode('[role_capabilities role="administrator"]');
 $context          = Timber::context();
 $context['posts'] = Timber::get_posts();
 $context['menu'] = Timber::get_menu('primary');
